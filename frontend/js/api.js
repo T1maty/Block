@@ -2,7 +2,7 @@
 
 const API = (() => {
   const getBaseUrl = () =>
-    localStorage.getItem('apiBaseUrl') || 'http://127.0.0.1:8000';
+    localStorage.getItem('apiBaseUrl') || 'http://127.0.0.1:7000';
 
   const request = async (method, path, body = null) => {
     const url = `${getBaseUrl()}${path}`;
