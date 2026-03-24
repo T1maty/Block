@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Block — Todo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="light">
+
+  <!-- Settings Panel -->
+  <div class="settings-bar">
+    <span class="logo">✦ Block</span>
+    <div class="settings-right">
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+        <span class="toggle-icon">☀</span>
+      </button>
+      <button class="settings-btn" id="settingsBtn" title="API Settings">⚙</button>
+    </div>
+  </div>
+
+  <!-- API Config Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2>API Configuration</h2>
+      <p class="modal-desc">Connect to your FastAPI backend</p>
+      <label>Base URL</label>
+      <input type="text" id="apiUrl" placeholder="http://127.0.0.1:8000" />
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modalCancel">Cancel</button>
+        <button class="btn-primary" id="modalSave">Save & Connect</button>
+      </div>
+      <div class="connection-status" id="connectionStatus"></div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <main class="app">
+    <header class="app-header">
+      <h1>My Tasks</h1>
+      <p class="subtitle" id="taskCount">0 tasks remaining</p>
+    </header>
+
+    <!-- Add Todo Form -->
+    <div class="add-card">
+      <input
+        type="text"
+        id="taskInput"
+        class="task-input"
+        placeholder="What needs to be done?"
+        maxlength="120"
+      />
+      <input
+        type="text"
+        id="descInput"
+        class="desc-input"
+        placeholder="Description (optional)"
+        maxlength="200"
+      />
+      <button class="btn-add" id="addBtn">
+        <span>+</span> Add Task
+      </button>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="active">Active</button>
+      <button class="tab" data-filter="completed">Completed</button>
+    </div>
+
+    <!-- Todo List -->
+    <div class="todo-list" id="todoList">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">✦</div>
+        <p>No tasks yet. Add one above!</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <span id="apiIndicator" class="api-dot offline" title="API status"></span>
+      <span id="apiLabel">Local mode</span>
+      <button class="clear-btn" id="clearCompleted">Clear completed</button>
+    </footer>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
